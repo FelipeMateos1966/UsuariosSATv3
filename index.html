@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Tickets</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2196F3">
+</head>
+<body>
+  <div class="controls">
+    <button id="request-perms-btn">Acceder a Cámara y Micrófono</button>
+    <video id="preview" autoplay muted playsinline></video>
+    <p id="status"></p>
+  </div>
+  <iframe src="https://sistema-de-tickets-de-soporte-7621540317.us-west1.run.app" frameborder="0"></iframe>
+  
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').then(registration => {
+          console.log('ServiceWorker registrado con éxito:', registration.scope);
+        }).catch(err => {
+          console.log('Registro de ServiceWorker fallido:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
